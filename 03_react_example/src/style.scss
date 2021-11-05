@@ -1,0 +1,120 @@
+body {
+    margin: auto;
+    max-width:600px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    margin: 40px;
+}
+
+.cat-list {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    &>ul {
+        list-style:none;
+        margin:0;
+        padding:0;
+        display:flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &>ul {
+        list-style:none;
+        margin:0;
+        padding:0;
+    }
+}
+
+.cat {
+    margin:40px;
+    transition: transform 0.5s;
+
+    &.active {
+        transform: scale(2);
+    }
+
+    .head {
+        background: black;
+        border-radius: 0 0 20px 20px;
+        width:100px;
+        height:50px;
+        position:relative;
+    
+
+        &:before, &:after {
+            content: '';
+            border: 10px solid black;
+            border-top: 10px solid white;
+            width:0px;
+            height:0px;
+            top:-20px;
+            position:absolute;
+        }
+
+        &:before {
+            border-right: 10px solid white;
+            left:0;
+        }
+        &:after {
+            border-left: 10px solid white;
+            right:0;
+        }
+    }
+
+    .face {
+        position: relative;
+        width: 100px;
+        height: 100px;
+    
+        &:before,  &:after {
+            content: '';
+            border-radius:20px;
+            width:20px;
+            height:20px;
+            position:absolute;
+            top:10px;
+            border:4px solid lightskyblue;
+            background: black;
+        }
+
+        &:before {
+            left: 20px;
+        }
+
+        &:after {
+            right: 10px;
+        }        
+    }
+    
+    .name {
+        text-align:center;
+        margin:10px;
+    }
+}
+
+/* Color Variations */
+
+$eye-colours: ("blue": lightskyblue, "green": rgb(10, 194, 10), "yellow": rgb(211, 211, 23), "pink": rgb(235, 178, 188));
+
+@each $name, $color in $eye-colours {
+    .cat.#{$name}-left-eye .face:before {
+        border:4px solid $color;
+    } 
+
+    .cat.#{$name}-right-eye .face:after {
+        border:4px solid $color;
+    }
+}
+
+$face-colours: ("blue": rgb(128, 177, 208), "grey": rgb(142, 142, 142), "black": rgb(0, 0, 0), "pink": rgb(235, 178, 188));
+
+@each $name, $color in $face-colours {
+    .cat.#{$name}-face .head {
+        background: $color;
+    }
+}
