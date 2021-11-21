@@ -18,7 +18,8 @@ export const CatList = ({ cats }) => {
                                 cat={cat}
                                 active={cat === favouriteCat}
                                 onClick={() => setFavouriteCat(cat)}
-                            /></li>
+                            />
+                        </li>
                     ))
                 }
             </ul>

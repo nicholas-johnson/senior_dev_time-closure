@@ -1,0 +1,71 @@
+<html>
+
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Montserrat:wght@100&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Lato, sans-serif;
+            background: black;
+            color: #eee;
+            padding: 2em;
+        }
+
+        p {
+            font-size: 5em;
+        }
+
+        span {
+            display: inline-block;
+            transform: scale(1);
+            transition: all 0.5s cubic-bezier(.33, .21, .52, 5.06);
+
+        }
+
+        span.hide {
+            transform: scale(0);
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <p>A Closure is a portable function scope.</p>
+
+    <p>When you CREATE a function, all the variables that were in scope when you CREATED the function continue to be in
+        scope for that function, as long as that function exists.</p>
+
+    <footer>Press a key or click the mouse</footer>
+
+
+    <script>
+        document.querySelectorAll('p').forEach(p => {
+
+            p.innerHTML = p.innerHTML
+                .split(' ')
+                .filter(word => word)
+                .map(word => `<span class="hide">${word}</span>`)
+                .join(' ');
+        })
+
+        const unhide = () => {
+            console.log('click');
+            document.querySelector('span.hide').removeAttribute('class')
+        }
+
+        document.body.onclick = unhide;
+        document.body.onkeypress = unhide;
+    </script>
+
+</body>
+
+</html>
